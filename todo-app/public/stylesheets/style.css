@@ -16,15 +16,15 @@ body {
 
 .table td,
 .table th {
-    border-top: none;
-    word-break: break-all;
+    border: none;
+    color: #fff;
 }
 
-.table td svg {
+.table td img {
     opacity: 0.25;
 }
 
-.table td svg:hover {
+.table td img:hover {
     opacity: 1;
     -webkit-transition: opacity .25s ease-in-out .0s;
     transition: opacity .25s ease-in-out .0s;
