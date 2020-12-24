@@ -7,6 +7,7 @@ body {
 .app-container {
     background-color: #6a998f;
     border-radius: 20px;
+    max-width: 90vw;
 }
 
 .app-content {
@@ -28,6 +29,27 @@ body {
     opacity: 1;
     -webkit-transition: opacity .25s ease-in-out .0s;
     transition: opacity .25s ease-in-out .0s;
+}
+
+.close {
+    height: 0px;
+    opacity: 0;
+    transition: height .75s ease-out, opacity .75s ease-out;
+}
+
+.open {
+    height: 3em;
+    opacity: 100;
+    transition: height .75s ease-out, opacity .75s ease-out;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    border-radius: 20px;
+    color: white;
 }
 
 
