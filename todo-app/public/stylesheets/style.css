@@ -21,6 +21,10 @@ body {
     color: #fff;
 }
 
+.table input {
+    color: #fff;
+}
+
 .table td img {
     opacity: 0.25;
 }
@@ -34,12 +38,15 @@ body {
 .close {
     height: 0px;
     opacity: 0;
+    visibility: hidden;
     transition: height .75s ease-out, opacity .75s ease-out;
+    z-index: -1;
 }
 
 .open {
     height: 3em;
     opacity: 100;
+    visibility: visible;
     transition: height .75s ease-out, opacity .75s ease-out;
 }
 
@@ -50,6 +57,11 @@ textarea {
 button {
     border-radius: 20px;
     color: white;
+}
+
+.checked {
+    text-decoration: line-through;
+    opacity: 50%;
 }
 
 
