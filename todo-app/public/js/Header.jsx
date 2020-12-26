@@ -1,7 +1,6 @@
 import React from "react";
 import TaskAdderForm from "./TaskAdderForm";
 
-
 class TaskAdderButton extends React.Component {
   render() {
     return (
@@ -31,8 +30,11 @@ class Header extends React.Component {
   render() {
     return (
       <div class="app-header row p-3">
-        <TaskAdderButton toggleFormVisible={this.toggleFormVisible}  />
-        <TaskAdderForm formVisible={this.state.formVisible} fetchTasks={this.fetchTasks} />
+        <TaskAdderButton toggleFormVisible={this.toggleFormVisible} />
+        <TaskAdderForm
+          formVisible={this.state.formVisible}
+          fetchTasks={this.fetchTasks}
+        />
       </div>
     );
   }

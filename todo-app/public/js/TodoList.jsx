@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "./Task"
+import Task from "./Task";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -14,28 +14,36 @@ class TodoList extends React.Component {
 
   render() {
     const { tasks, isLoaded } = this.state;
-    var tableElems = tasks.map((t) => (
-      <Task
-        isCompleted={t.isCompleted}
-        description={t.description}
-        creationDate={t.creationDate}
-        _id={t._id}
-        fetchTasks={this.fetchTasks}
-      />
-    ));
+    var tableElems;
+    var content;
+    if (tasks == null || tasks.length == 0) {
+      content = <div className="w-auto m-auto p-2"> No tasks found!</div>;
+    } else {
+      tableElems = tasks.map((t) => (
+        <Task
+          isCompleted={t.isCompleted}
+          description={t.description}
+          creationDate={t.creationDate}
+          _id={t._id}
+          fetchTasks={this.fetchTasks}
+        />
+      ));
+      content = <table className="table table-sm m-3">{tableElems}</table>;
+    }
     if (isLoaded) {
       return (
         <div className="app-content-container row">
-          <div className="app-content m-4 col">
-            <table className="table table-sm m-3">{tableElems}</table>
-          </div>
+          <div className="app-content m-4 col">{content}</div>
         </div>
       );
     } else {
       return (
-        <div className="app-content-loading row text-center w-auto">
+        <div className="app-content-loading row">
+          <div className="w-auto m-auto p-2">
           {" "}
           Loading...{" "}
+          </div>
+          
         </div>
       );
     }

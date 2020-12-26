@@ -7,6 +7,7 @@ class TaskAdderForm extends React.Component {
       value: "",
     };
     this.fetchTasks = this.props.fetchTasks;
+    this.toggleFormVisible = this.props.toggleFormVisible;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -16,22 +17,23 @@ class TaskAdderForm extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     const reqOpts = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ description: this.state.value }),
     };
+
     fetch("/api/add", reqOpts)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          this.props.fetchTasks();
+          this.fetchTasks();
         } else {
           alert("PIRACY IS NO PARTY. An error has occured. SHUT OFF NOW!");
         }
       });
-
-    event.preventDefault();
+    toggleFormVisible();
   }
 
   render() {

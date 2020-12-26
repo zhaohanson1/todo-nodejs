@@ -7,7 +7,7 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      tasks: null,
       isLoaded: false,
     };
     this.fetchTasks = this.fetchTasks.bind(this);
@@ -33,11 +33,12 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div class="app-container container mx-auto my-5">
-        <Header fetchTasks={this.fetchTasks} />
+        <Header fetchTasks={this.fetchTasks}/>
         <TodoList
           fetchTasks={this.fetchTasks}
           isLoaded={this.state.isLoaded}
           tasks={this.state.tasks}
+          key={this.state.tasks}
         />
       </div>
     );

@@ -30,12 +30,16 @@ apiRouter.post("/add", (req, res) => {
         .save()
         .then((task) => {
             res.status(200).json({
-                task: "Task add success.",
+                success: true,
+                msg: "Task add success."
             });
         })
         .catch((err) => {
             console.log(err);
-            res.status(400).send("Task add failed.");
+            res.status(400).json({
+                success: false,
+                msg: "Task add failed."
+            });
         });
 });
 

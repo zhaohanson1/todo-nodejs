@@ -1,7 +1,6 @@
 import React from "react";
 
 class Task extends React.Component {
-    
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +11,7 @@ class Task extends React.Component {
       editing: false,
       inputValue: "",
     };
-    
+
     this.fetchTasks = this.props.fetchTasks;
 
     this.sendUpdate = this.sendUpdate.bind(this);
@@ -22,7 +21,6 @@ class Task extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
   }
-
 
   sendUpdate(body) {
     const reqOpts = {
@@ -42,7 +40,6 @@ class Task extends React.Component {
       });
   }
 
-
   checkboxHandler() {
     var oppositeState = !this.state.isCompleted;
     this.setState({
@@ -55,14 +52,12 @@ class Task extends React.Component {
     });
   }
 
-
   editInputHandler() {
     this.setState({
       editing: true,
       inputValue: this.state.description,
     });
   }
-
 
   editSumbitHandler() {
     this.setState({
@@ -76,14 +71,14 @@ class Task extends React.Component {
     });
   }
 
-
   handleChange(event) {
     this.setState({ inputValue: event.target.value });
   }
 
-
   deleteHandler() {
-    fetch("/api/delete/" + this.state.id)
+    fetch("/api/delete/" + this.state.id, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -91,7 +86,6 @@ class Task extends React.Component {
         }
       });
   }
-
 
   render() {
     const {
@@ -110,7 +104,10 @@ class Task extends React.Component {
     );
 
     var descText = (
-      <td className={"w-75" + (isCompleted ? " checked" : "")} onClick={this.editInputHandler}>
+      <td
+        className={"w-75" + (isCompleted ? " checked" : "")}
+        onClick={this.editInputHandler}
+      >
         {description}
       </td>
     );
@@ -118,18 +115,20 @@ class Task extends React.Component {
     var editInput = (
       <td className={"w-auto"}>
         <input
+          autoFocus
           type="text"
           name="description"
           className={"w-100"}
           value={inputValue}
           onChange={this.handleChange}
+          onBlur={this.editSumbitHandler}
         />
       </td>
     );
 
     var saveButton = (
       <td className="w-auto" onClick={this.editSumbitHandler}>
-        <img src="static/images/edit.svg" />
+        <img src="static/images/save.svg" />
       </td>
     );
 
