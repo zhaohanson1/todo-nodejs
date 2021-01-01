@@ -5,11 +5,9 @@
     "scripts": {
         "webpack-watch": "webpack -w",
         "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 ./bin/www",
-        "dev-server": "npm run set-env && nodemon --exec babel-node --presets @babel/preset-react ./bin/www",
+        "dev-server": "nodemon --exec babel-node --presets @babel/preset-react ./bin/www",
         "devstart": "concurrently --kill-others \"npm run webpack-watch\" \"npm run dev-server\"",
-        "build": "webpack --mode production",
-        "clean-env": "unset $(cat .env | sed -E 's/(.*)=.*/\\1/' | xargs)",
-        "set-env": "clean-env && export $(cat .env | xargs)"
+        "build": "webpack --mode production"
     },
     "dependencies": {
         "@popperjs/core": "^2.6.0",
