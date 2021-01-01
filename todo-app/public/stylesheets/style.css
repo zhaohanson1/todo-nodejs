@@ -27,7 +27,8 @@ body {
 }
 
 .table input {
-    color: #fff;
+    color: #000;
+    background-color: white;
 }
 
 .table td img {

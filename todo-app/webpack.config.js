@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './public/js/todo-app.jsx',
+    entry: './public/js/TodoApp.jsx',
     module: {
         rules: [{
             test: /\.(js|jsx)$/,

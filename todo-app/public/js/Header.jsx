@@ -4,8 +4,8 @@ import TaskAdderForm from "./TaskAdderForm";
 class TaskAdderButton extends React.Component {
   render() {
     return (
-      <div class="app-add w-auto my-1" onClick={this.props.toggleFormVisible}>
-        <img src="static/images/add.svg" />
+      <div class="app-add w-auto my-1" aria-label="Add Task" onClick={this.props.toggleFormVisible}>
+        <img src="static/images/add.svg" alt="Add Task Button"/>
       </div>
     );
   }

@@ -99,7 +99,7 @@ class Task extends React.Component {
 
     var editButton = (
       <td className="w-auto" onClick={this.editInputHandler}>
-        <img src="static/images/edit.svg" />
+        <img src="static/images/edit.svg" alt="Edit button"/>
       </td>
     );
 
@@ -128,7 +128,7 @@ class Task extends React.Component {
 
     var saveButton = (
       <td className="w-auto" onClick={this.editSumbitHandler}>
-        <img src="static/images/save.svg" />
+        <img src="static/images/save.svg" alt="Save button"/>
       </td>
     );
 
@@ -139,12 +139,13 @@ class Task extends React.Component {
             type="checkbox"
             checked={isCompleted}
             onChange={this.checkboxHandler}
+            aria-label="Task Complete Checkbox"
           />
         </td>
         {!editing ? [descText, editButton] : [editInput, saveButton]}
 
         <td className="w-auto" onClick={this.deleteHandler}>
-          <img src="static/images/delete.svg" />
+          <img src="static/images/delete.svg" alt="Delete button"/>
         </td>
       </tr>
     );

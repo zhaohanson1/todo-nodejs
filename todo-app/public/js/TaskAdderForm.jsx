@@ -30,7 +30,7 @@ class TaskAdderForm extends React.Component {
         if (data.success) {
           this.fetchTasks();
         } else {
-          alert("PIRACY IS NO PARTY. An error has occured. SHUT OFF NOW!");
+          console.log("Error: " + data.msg);
         }
       });
     toggleFormVisible();
@@ -42,20 +42,26 @@ class TaskAdderForm extends React.Component {
         <form
           className={this.props.formVisible ? "open" : "close disabled"}
           onSubmit={this.handleSubmit}
+          id="add-form"
         >
           <textarea
             class="form-control"
             rows="2"
             value={this.state.value}
             onChange={this.handleChange}
+            aria-label="Task Description Form"
+            aria-required="true"
           ></textarea>
+          <label for="submit-button" form="add-form">Submit</label>
           <input
             className={
               "btn btn-primary btn-sm " +
               (this.props.formVisible ? "visible" : "invisible")
             }
+            aria-label="Sumbit button"
             type="submit"
             value="Sumbit"
+            id="submit-button"
           />
         </form>
       </div>

@@ -9,6 +9,7 @@
         "devstart": "concurrently --kill-others \"npm run webpack-watch\" \"npm run dev-server\""
     },
     "dependencies": {
+        "@popperjs/core": "^2.6.0",
         "bootstrap": "^5.0.0-beta1",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
