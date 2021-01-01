@@ -376,6 +376,5 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/node,react,reactnative
 app_spec
-
-*/dist
-*/.env
+dist
+.env
