@@ -1,10 +1,10 @@
 {
     "name": "todo-app",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "webpack-watch": "webpack -w",
-        "start": "node ./bin/www",
+        "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 ./bin/www",
         "dev-server": "nodemon --exec babel-node --presets @babel/preset-react ./bin/www",
         "devstart": "concurrently --kill-others \"npm run webpack-watch\" \"npm run dev-server\""
     },
@@ -35,5 +35,9 @@
         "webpack": "^5.11.0",
         "webpack-cli": "^4.2.0",
         "webpack-dev-server": "^3.11.0"
+    },
+    "engines": {
+        "node": "14.15.1"
     }
+
 }

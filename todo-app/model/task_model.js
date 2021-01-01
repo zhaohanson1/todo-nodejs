@@ -1,8 +1,9 @@
 // start mongoDB
 var mongoose = require('mongoose');
-const dbname = "Cluster0";
-const dbuname = process.env.MONGOUNAME;
-const dbpass = process.env.MONGOPW;
+
+const dbname = process.env.MONGO_DBNAME;
+const dbuname = process.env.MONGO_UNAME;
+const dbpass = process.env.MONGO_PW;
 const uri = "mongodb+srv://" + dbuname + ":" + dbpass + "@cluster0.ftei6.mongodb.net/" + dbname + "?retryWrites=true&w=majority";
 
 mongoose.connect(uri, {
