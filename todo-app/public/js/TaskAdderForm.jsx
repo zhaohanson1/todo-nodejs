@@ -44,6 +44,7 @@ class TaskAdderForm extends React.Component {
           onSubmit={this.handleSubmit}
           id="add-form"
         >
+          <label for="task-desc-form"></label>
           <textarea
             class="form-control"
             rows="2"
@@ -51,8 +52,9 @@ class TaskAdderForm extends React.Component {
             onChange={this.handleChange}
             aria-label="Task Description Form"
             aria-required="true"
+            id="task-desc-form"
           ></textarea>
-          <label for="submit-button" form="add-form">Submit</label>
+          <label for="submit-button"></label>
           <input
             className={
               "btn btn-primary btn-sm " +

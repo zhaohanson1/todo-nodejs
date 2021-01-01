@@ -1,5 +1,6 @@
-import React from "react";
-import Task from "./Task";
+import React, { Suspense } from 'react';
+
+const Task = React.lazy(() => import("./Task"));
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -20,13 +21,15 @@ class TodoList extends React.Component {
       content = <div className="w-auto m-auto p-2"> No tasks found!</div>;
     } else {
       tableElems = tasks.map((t) => (
-        <Task
-          isCompleted={t.isCompleted}
-          description={t.description}
-          creationDate={t.creationDate}
-          _id={t._id}
-          fetchTasks={this.fetchTasks}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Task
+            isCompleted={t.isCompleted}
+            description={t.description}
+            creationDate={t.creationDate}
+            _id={t._id}
+            fetchTasks={this.fetchTasks}
+          />
+        </Suspense>
       ));
       content = <table className="table table-sm m-3">{tableElems}</table>;
     }
@@ -39,11 +42,7 @@ class TodoList extends React.Component {
     } else {
       return (
         <div className="app-content-loading row">
-          <div className="w-auto m-auto p-2">
-          {" "}
-          Loading...{" "}
-          </div>
-          
+          <div className="w-auto m-auto p-2"> Loading... </div>
         </div>
       );
     }

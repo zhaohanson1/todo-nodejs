@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from 'react';
 import ReactDOM from "react-dom";
-import Header from "./Header";
-import TodoList from "./TodoList";
+
+const Header = React.lazy(() => import("./Header"));
+const TodoList = React.lazy(() => import("./TodoList"));
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -33,13 +34,17 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div class="app-container container mx-auto my-5">
-        <Header fetchTasks={this.fetchTasks}/>
-        <TodoList
-          fetchTasks={this.fetchTasks}
-          isLoaded={this.state.isLoaded}
-          tasks={this.state.tasks}
-          key={this.state.tasks}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Header fetchTasks={this.fetchTasks} />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TodoList
+            fetchTasks={this.fetchTasks}
+            isLoaded={this.state.isLoaded}
+            tasks={this.state.tasks}
+            key={this.state.tasks}
+          />
+        </Suspense>
       </div>
     );
   }

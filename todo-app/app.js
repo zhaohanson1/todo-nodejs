@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var compression = require('compression')
 
 
 var indexRouter = require('./routes/index');
@@ -23,6 +24,25 @@ app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/static', express.static(path.join(__dirname, 'dist')));
 app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
+
+const shouldCompress = (req, res) => {
+    if (req.headers['x-no-compression']) {
+        // don't compress responses if this request header is present
+        return false;
+    }
+
+    // fallback to standard compression
+    return compression.filter(req, res);
+};
+
+app.use(compression({
+    // filter decides if the response should be compressed or not,
+    // based on the `shouldCompress` function above
+    filter: shouldCompress,
+    // threshold is the byte threshold for the response body size
+    // before compression is considered, the default is 1kb
+    threshold: 0
+}));
 
 // Route handling
 app.use('/', indexRouter);

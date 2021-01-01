@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Task extends React.Component {
   constructor(props) {
@@ -99,7 +99,9 @@ class Task extends React.Component {
 
     var editButton = (
       <td className="w-auto" onClick={this.editInputHandler}>
-        <img src="static/images/edit.svg" alt="Edit button"/>
+        <img src="static/images/edit.svg" 
+        alt="Edit button"
+        width="24" height="24" />
       </td>
     );
 
@@ -128,7 +130,9 @@ class Task extends React.Component {
 
     var saveButton = (
       <td className="w-auto" onClick={this.editSumbitHandler}>
-        <img src="static/images/save.svg" alt="Save button"/>
+        <img src="static/images/save.svg" 
+        alt="Save button"
+        width="24" height="24" />
       </td>
     );
 
@@ -145,7 +149,9 @@ class Task extends React.Component {
         {!editing ? [descText, editButton] : [editInput, saveButton]}
 
         <td className="w-auto" onClick={this.deleteHandler}>
-          <img src="static/images/delete.svg" alt="Delete button"/>
+          <img src="static/images/delete.svg" 
+          alt="Delete button"
+          width="24" height="24" />
         </td>
       </tr>
     );
